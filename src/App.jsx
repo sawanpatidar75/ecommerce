@@ -6,6 +6,7 @@ import ProductPage from "./pages/Product/ProductPage";
 import BrandPage from "./pages/Product/BrandPage";
 import Layout from "./components/Content/Layout";
 import OrderPage from "./pages/Order/OrderPage";
+import BrandProductPage from "./pages/Order/BrandProductPage";
 // Import other pages when ready
 // import BrandPage from "./pages/BrandPage";
 // import OrderPage from "./pages/OrderPage";
@@ -20,7 +21,7 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route path="/menu-products" element={<ProductPage />} />
           <Route path="/brands" element={<OrderPage />} />
-          {/* <Route path="/brands" element={<BrandProductPage />} /> */}
+          <Route path="/brand-products" element={<BrandProductPage />} />
           <Route path="/*" element={"Home Page"} />
           {/* Add other routes similarly */}
         </Route>

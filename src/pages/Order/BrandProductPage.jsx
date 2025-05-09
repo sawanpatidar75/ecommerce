@@ -6,6 +6,8 @@ import Topbar from '../../components/Orders/Topbar';
 import OrderTable from '../../components/Orders/OrderTables';
 import ItemGridWithPagination from '../../components/Content/ItemGridWithPagination';
 import PaginationBar from '../../components/Orders/OrderPagination';
+import { renderToStaticMarkup } from 'react-dom/server';
+import BrandProductTable from '../../components/Orders/BrandProductTable';
 
 const dummyOrders = [
     { id: 1, productName: 'Product A', staff: 'Test03', items: 5, startDate: '2025-04-01', lastUpdate: '2025-04-05' },
@@ -29,21 +31,25 @@ const dummyOrders = [
 ];
 
 const dummyProducts = Array.from({ length: 500 }).map((_, idx) => ({
-    name: `Item ${idx + 1}`,
-    dimensions: `W${1000 + idx}×D${500 + idx}×H${500 + idx}`,
-    code: `YZ${2000 + idx}A`,
+    id: idx + 1,
+    name: `Product ${idx + 1}`,
     image: 'https://picsum.photos/id/' + (idx) + '/500/300',
+    code: `YZ${2000 + idx}A`,
+    price: Math.floor(Math.random() * 1000) + 1,     // randome number between 1 and 1000
+    quantity: Math.floor(Math.random() * 100),
+    dimensions: `W${1000 + idx}×D${500 + idx}×H${500 + idx}`,
+    remark: `Remark ${idx + 1}`,
   }));
 
-const OrderPage = () => {
+const BrandProductPage = () => {
     const [activeTab, setActiveTab] = useState('All');
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10;
 
-    const filteredOrders = dummyOrders.filter(order => {
+    const filteredProducts = dummyProducts.filter(order => {
         if (activeTab === 'All') return true;
-        if (activeTab === 'In Progress') return order.items > 2;
-        if (activeTab === 'Completed') return order.items <= 2;
+        if (activeTab === 'In Progress') return order.quantity > 10;
+        if (activeTab === 'Completed') return order.quantity <= 2;
         return true;
     });
 
@@ -53,13 +59,13 @@ const OrderPage = () => {
 
             {/* Scrollable Table Area */}
             <div className="flex-1 overflow-auto">
-                <OrderTable orders={filteredOrders} />
+                <BrandProductTable products={filteredProducts} />
             </div>
 
             {/* Sticky Pagination */}
             <div className="sticky bottom-0 bg-white py-2 border-t">
                 <PaginationBar
-                    total={filteredOrders.length}
+                    total={filteredProducts.length}
                     pageSize={pageSize}
                     currentPage={currentPage}
                     onPageChange={setCurrentPage}
@@ -69,4 +75,4 @@ const OrderPage = () => {
     );
 };
 
-export default OrderPage;
+export default BrandProductPage;
