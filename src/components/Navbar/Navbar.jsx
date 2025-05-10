@@ -15,7 +15,7 @@ const Navbar = () => {
         <header className="bg-gray-800 text-white flex justify-between items-center px-6 py-3 shadow">
             <div className="flex items-center space-x-8">
                 <div className="text-2xl font-bold">
-                    <span className="text-green-400">MANU</span> by Manita
+                    <span className="text-green-400">Ecommerce</span>
                 </div>
                 <nav className="flex space-x-6">
                     {menuItems.map((item) => (
