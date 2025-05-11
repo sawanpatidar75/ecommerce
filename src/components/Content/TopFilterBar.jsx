@@ -1,17 +1,19 @@
 import React from 'react';
 import clsx from 'clsx';
-
-const rooms = [
-  'All',
-  'Living Room',
-  'Dining Room',
-  'Bedroom',
-  'Study Room',
-  'Other',
-  'My Favorites',
-];
+import { useTranslation } from 'react-i18next';
 
 const TopFilterBar = ({ selectedRoom, onSelect }) => {
+const { t } = useTranslation();
+  const rooms = [
+    t('menu-products'),
+    'Living Room',
+    'Dining Room',
+    'Bedroom',
+    'Study Room',
+    'Other',
+    'My Favorites',
+  ];
+
   return (
     <div className="bg-white px-4 py-2 border-b flex space-x-4 overflow-x-auto">
       {rooms.map((room) => (

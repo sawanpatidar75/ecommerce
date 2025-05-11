@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import ItemCard from './ItemCard';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const ItemGridWithPagination = ({ items, itemsPerPage = 8 }) => {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [jumpPage, setJumpPage] = useState('');
   const maxPagesToShow = 5;
@@ -36,12 +38,9 @@ const ItemGridWithPagination = ({ items, itemsPerPage = 8 }) => {
 
   return (
     <div className="mt-6">
-      {/* Total info */}
       <div className="text-sm text-gray-600 mb-2">
         Showing page {currentPage} of {totalPages} — Total items: {totalItems}
       </div>
-
-      {/* Grid with animation */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentPage}
@@ -56,22 +55,20 @@ const ItemGridWithPagination = ({ items, itemsPerPage = 8 }) => {
           ))}
         </motion.div>
       </AnimatePresence>
-
-      {/* Pagination controls */}
       <div className="flex flex-wrap justify-center mt-6 items-center gap-2">
         <button
           onClick={() => setCurrentPage(1)}
           disabled={currentPage === 1}
           className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
         >
-          First
+           {t('first')}
         </button>
         <button
           onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
           disabled={currentPage === 1}
           className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
         >
-          Prev
+          {t('prev')}
         </button>
 
         {getVisiblePages().map((page) => (
@@ -91,23 +88,22 @@ const ItemGridWithPagination = ({ items, itemsPerPage = 8 }) => {
           disabled={currentPage === totalPages}
           className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
         >
-          Next
+          {t('next')}
         </button>
         <button
           onClick={() => setCurrentPage(totalPages)}
           disabled={currentPage === totalPages}
           className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
         >
-          Last
+          {t('last')}
         </button>
 
-        {/* Jump to page */}
         <div className="ml-4 flex items-center space-x-2">
           <input
             type="number"
             min="1"
             max={totalPages}
-            placeholder="Go to"
+            placeholder={t('goto')}
             value={jumpPage}
             onChange={(e) => setJumpPage(e.target.value)}
             className="w-16 px-2 py-1 border border-gray-300 rounded"
@@ -116,7 +112,7 @@ const ItemGridWithPagination = ({ items, itemsPerPage = 8 }) => {
             onClick={handleJump}
             className="px-2 py-1 bg-blue-500 text-white rounded"
           >
-            Go
+            {t('go')}
           </button>
         </div>
       </div>

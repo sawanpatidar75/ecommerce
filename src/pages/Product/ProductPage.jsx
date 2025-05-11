@@ -5,7 +5,7 @@ import ItemGridWithPagination from '../../components/Content/ItemGridWithPaginat
 
 const dummyItems = Array.from({ length: 500 }).map((_, idx) => ({
   name: `Item ${idx + 1}`,
-  dimensions: `W${700 + idx}×D${600 + idx}×H${500 + idx}`,
+  dimensions: `W${600 + idx}×D${600 + idx}×H${400 + idx}`,
   code: `YZ${8000 + idx}A`,
   image: 'https://picsum.photos/id/' + (idx % 100) + '/500/300',
 }));

@@ -7,7 +7,7 @@ import { AiOutlineProduct } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
 
 const menuItems = [
-    { name: "Menu Products", icon: <AiOutlineProduct />, route: "/menu-products" },
+    { name: "Menu Products", icon: <AiOutlineProduct />, route: "/products" },
     { name: 'Brands', icon: <MdHome />, route: '/brands' },
     { name: 'Brand Products', icon: <TfiPackage />, route: '/brand-products' },
     { name: 'Marble', icon: <MdLayers />, route: '/marble' },
@@ -19,6 +19,7 @@ const menuItems = [
 ];
 
 const Sidebar = () => {
+    
     const [isOpen, setIsOpen] = useState(true);
     const location = useLocation();
     const menu = menuItems.find(item => item.route === location.pathname);

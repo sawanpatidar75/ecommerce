@@ -1,0 +1,26 @@
+{
+    "welcome": "Ecommerce",
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "menu": "Menu",
+    "All" : "all",
+    "menu-products":"Menu Products",
+    "brands":"Brands",
+    "brand-products":"Brand Products",
+    "marble":"Marble",
+    "color-switch": "Color Switch",
+    "textile":"Textile",
+    "project":"Project",
+    "order":"Order",
+    "setting": "Setting",
+    "addToFavorites" : "Add to Favorites",
+    "addToProjects" : "Add to Projects",
+    "first" :"First",
+    "prev" : "Prev",
+    "next":"Next",
+    "last":"Last",
+    "go" : "go",
+    "goto" : "Go to",
+    "description": "This is an English description."
+  }
+  
